@@ -87,92 +87,133 @@ const Features = () => {
     },
   };
 
+  // const featureData = [
+  //   {
+  //     title: 'OCR Receipt Scanning',
+  //     icon: <ReceiptIcon sx={{ fontSize: 32 }} />,
+  //     color: '#4E36FF',
+  //     gradient: 'linear-gradient(to right, #3B82F6, #8B5CF6)',
+  //     features: [
+  //       'High-accuracy receipt scanning with AI',
+  //       'Automatic categorization of expenses',
+  //       'Multi-format receipt support',
+  //       'Error detection and correction',
+  //       'Real-time data extraction',
+  //     ],
+  //     highlights: ['AI-Powered', 'Accurate', 'Automated'],
+  //   },
+  //   {
+  //     title: 'Approval Workflows',
+  //     icon: <CheckCircleIcon sx={{ fontSize: 32 }} />,
+  //     color: '#FF6B6B',
+  //     gradient: 'linear-gradient(to right, #EC4899, #EF4444)',
+  //     features: [
+  //       'Customizable multi-level approval processes',
+  //       'Automated routing to approvers',
+  //       'Approval hierarchy management',
+  //       'Audit trails for compliance',
+  //       'Real-time approval status tracking',
+  //     ],
+  //     highlights: ['Customizable', 'Automated', 'Compliant'],
+  //   },
+  //   {
+  //     title: 'Real-Time Tracking',
+  //     icon: <TrendingUpIcon sx={{ fontSize: 32 }} />,
+  //     color: '#10B981',
+  //     gradient: 'linear-gradient(to right, #10B981, #059669)',
+  //     features: [
+  //       'Live expense and budget dashboards',
+  //       'Real-time spending alerts',
+  //       'Customizable spending insights',
+  //       'Historical trend analysis',
+  //       'Mobile access to tracking',
+  //     ],
+  //     highlights: ['Real-Time', 'Insightful', 'Mobile'],
+  //   },
+  //   {
+  //     title: 'Accounting Integration',
+  //     icon: <BusinessIcon sx={{ fontSize: 32 }} />,
+  //     color: '#8B5CF6',
+  //     gradient: 'linear-gradient(to right, #8B5CF6, #7C3AED)',
+  //     features: [
+  //       'Seamless sync with QuickBooks',
+  //       'Integration with Xero and other platforms',
+  //       'Automated data export',
+  //       'API support for custom integrations',
+  //       'Secure data transfer',
+  //     ],
+  //     highlights: ['Seamless', 'Secure', 'Automated'],
+  //   },
+  //   {
+  //     title: 'Mobile App',
+  //     icon: <SmartphoneIcon sx={{ fontSize: 32 }} />,
+  //     color: '#F59E0B',
+  //     gradient: 'linear-gradient(to right, #F59E0B, #F97316)',
+  //     features: [
+  //       'Receipt uploads on the go',
+  //       'Real-time expense submission',
+  //       'Offline mode functionality',
+  //       'Secure access with biometrics',
+  //       'Push notifications for updates',
+  //     ],
+  //     highlights: ['Mobile-First', 'Secure', 'Offline'],
+  //   },
+  //   {
+  //     title: 'Actionable Analytics',
+  //     icon: <BarChartIcon sx={{ fontSize: 32 }} />,
+  //     color: '#06B6D4',
+  //     gradient: 'linear-gradient(to right, #06B6D4, #3B82F6)',
+  //     features: [
+  //       'Key expense metrics and trends',
+  //       'Customizable financial reports',
+  //       'Real-time dashboard updates',
+  //       'Predictive budgeting insights',
+  //       'Compliance monitoring',
+  //     ],
+  //     highlights: ['Data-Driven', 'Predictive', 'Customizable'],
+  //   },
+  // ];
   const featureData = [
-    {
-      title: 'OCR Receipt Scanning',
-      icon: <ReceiptIcon sx={{ fontSize: 32 }} />,
-      color: '#4E36FF',
-      gradient: 'linear-gradient(to right, #3B82F6, #8B5CF6)',
-      features: [
-        'High-accuracy receipt scanning with AI',
-        'Automatic categorization of expenses',
-        'Multi-format receipt support',
-        'Error detection and correction',
-        'Real-time data extraction',
-      ],
-      highlights: ['AI-Powered', 'Accurate', 'Automated'],
-    },
-    {
-      title: 'Approval Workflows',
-      icon: <CheckCircleIcon sx={{ fontSize: 32 }} />,
-      color: '#FF6B6B',
-      gradient: 'linear-gradient(to right, #EC4899, #EF4444)',
-      features: [
-        'Customizable multi-level approval processes',
-        'Automated routing to approvers',
-        'Approval hierarchy management',
-        'Audit trails for compliance',
-        'Real-time approval status tracking',
-      ],
-      highlights: ['Customizable', 'Automated', 'Compliant'],
-    },
-    {
-      title: 'Real-Time Tracking',
-      icon: <TrendingUpIcon sx={{ fontSize: 32 }} />,
-      color: '#10B981',
-      gradient: 'linear-gradient(to right, #10B981, #059669)',
-      features: [
-        'Live expense and budget dashboards',
-        'Real-time spending alerts',
-        'Customizable spending insights',
-        'Historical trend analysis',
-        'Mobile access to tracking',
-      ],
-      highlights: ['Real-Time', 'Insightful', 'Mobile'],
-    },
-    {
-      title: 'Accounting Integration',
-      icon: <BusinessIcon sx={{ fontSize: 32 }} />,
-      color: '#8B5CF6',
-      gradient: 'linear-gradient(to right, #8B5CF6, #7C3AED)',
-      features: [
-        'Seamless sync with QuickBooks',
-        'Integration with Xero and other platforms',
-        'Automated data export',
-        'API support for custom integrations',
-        'Secure data transfer',
-      ],
-      highlights: ['Seamless', 'Secure', 'Automated'],
-    },
-    {
-      title: 'Mobile App',
-      icon: <SmartphoneIcon sx={{ fontSize: 32 }} />,
-      color: '#F59E0B',
-      gradient: 'linear-gradient(to right, #F59E0B, #F97316)',
-      features: [
-        'Receipt uploads on the go',
-        'Real-time expense submission',
-        'Offline mode functionality',
-        'Secure access with biometrics',
-        'Push notifications for updates',
-      ],
-      highlights: ['Mobile-First', 'Secure', 'Offline'],
-    },
-    {
-      title: 'Actionable Analytics',
-      icon: <BarChartIcon sx={{ fontSize: 32 }} />,
-      color: '#06B6D4',
-      gradient: 'linear-gradient(to right, #06B6D4, #3B82F6)',
-      features: [
-        'Key expense metrics and trends',
-        'Customizable financial reports',
-        'Real-time dashboard updates',
-        'Predictive budgeting insights',
-        'Compliance monitoring',
-      ],
-      highlights: ['Data-Driven', 'Predictive', 'Customizable'],
-    },
-  ];
+  {
+    title: 'Smart Receipt Management',
+    icon: <ReceiptIcon sx={{ fontSize: 32 }} />,
+    color: '#4E36FF',
+    gradient: 'linear-gradient(to right, #3B82F6, #8B5CF6)',
+    features: [
+      'Receipt Capture OCR/AI with mobile app',
+      'Automated Policy Enforcement',
+      'Categorization & Tagging AI-powered',
+      'Automated Approvals Workflow',
+    ],
+    highlights: ['AI-Enhanced', 'Accurate', 'Mobile-Optimized'],
+  },
+  {
+    title: 'Automation & Tracking',
+    icon: <TrendingUpIcon sx={{ fontSize: 32 }} />,
+    color: '#10B981',
+    gradient: 'linear-gradient(to right, #10B981, #059669)',
+    features: [
+      'Mileage Tracking GPS/AI',
+      'Reimbursement Processing automation',
+      'Fraud Detection AI/ML',
+      'Reporting & Analytics dashboard',
+    ],
+    highlights: ['Automated', 'Secure', 'Insightful'],
+  },
+  {
+    title: 'Enterprise Integrations',
+    icon: <BusinessIcon sx={{ fontSize: 32 }} />,
+    color: '#8B5CF6',
+    gradient: 'linear-gradient(to right, #8B5CF6, #7C3AED)',
+    features: [
+      'Corporate Card Integration',
+      'Multi-currency Support',
+      'Tax Compliance features',
+      'Integration with Accounting systems',
+    ],
+    highlights: ['Compliant', 'Connected', 'Scalable'],
+  },
+];
 
   const additionalFeatures = [
     {
@@ -440,6 +481,7 @@ const Features = () => {
             </Container>
           </motion.section>
         </Box>
+                  
 
         {/* Additional Features Section */}
         <Box sx={{ py: { xs: 12, lg: 20 }, px: { xs: 4, sm: 6, lg: 8 } }}>
@@ -618,3 +660,4 @@ const Features = () => {
 };
 
 export default Features;
+

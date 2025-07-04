@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
+import EfficiencyImpactSection from '@/components/home/EfficiencyImpactSection';
 
 // Non-SSR components
 const EnhancedHeroSection = dynamic(() => import('@/components/home/HeroSection'), { ssr: false });
@@ -16,6 +17,7 @@ export default function Home() {
     <Box component="main" sx={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)' }}>
       <EnhancedHeroSection />
       <EnhancedAboutSection />
+      <EfficiencyImpactSection/>
       <ChooseUsSection />
       <ComparisonSection />
       <ProcessSection />

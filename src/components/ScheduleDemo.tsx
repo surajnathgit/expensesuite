@@ -153,8 +153,8 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
 
       <DialogContent>
         <Stack spacing={2} mt={1}>
-          <TextField label="Name" name="name" fullWidth required value={form.name} onChange={handleChange} />
-          <TextField label="Email" name="email" type="email" fullWidth required value={form.email} onChange={handleChange} />
+          <TextField label="Name" name="name" fullWidth required value={form.name} onChange={handleChange}  />
+          <TextField label="Email" name="email" type="email" fullWidth required value={form.email} onChange={handleChange}  />
           <TextField label="Company Name" name="company" fullWidth value={form.company} onChange={handleChange} />
           <TextField label="Phone Number" name="phone" fullWidth required value={form.phone} onChange={handleChange} />
           <TextField label="Date" name="date" type="date" fullWidth InputLabelProps={{ shrink: true }} value={form.date} onChange={handleChange} />
