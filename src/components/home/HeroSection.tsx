@@ -1,10 +1,11 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import { Box, Typography, Button, Container, Grid, Avatar, Chip } from '@mui/material';
 import { PlayArrow, ArrowForward, TrendingUp, Security, Speed } from '@mui/icons-material';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
+import ScheduleDemo from '../../components/ScheduleDemo';
 
 
 const HeroSection = () => {
@@ -13,7 +14,7 @@ const HeroSection = () => {
   const isInView = useInView(ref, { once: false, amount: 0.3 });
   const controls = useAnimation()
   const isMobile = useMediaQuery('(max-width:550px)');
-
+  const [demoOpen, setDemoOpen] = useState(false);
   useEffect(() => {
     if (isInView) {
       controls.start('visible');
@@ -298,7 +299,7 @@ const HeroSection = () => {
                         background: `linear-gradient(45deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`,
                       },
                     }}
-                    // onClick={() => {/* Add demo booking logic */}}
+                     onClick={() => setDemoOpen(true)}
                   >
                     Book a Free Demo
                   </Button>
@@ -609,6 +610,7 @@ const HeroSection = () => {
           </Grid>
         </Grid>
       </Container>
+      <ScheduleDemo open={demoOpen} onClose={() => setDemoOpen(false)} />
     </Box>
   );
 };

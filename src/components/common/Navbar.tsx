@@ -247,7 +247,7 @@ export default function Navbar() {
         borderColor: 'divider',
         
       }}>
-        <Typography variant="h6">Agency Suite</Typography>
+        <Typography variant="h6">Expense Suite</Typography>
         <IconButton onClick={handleDrawerToggle}><CloseIcon /></IconButton>
       </Box>
 
