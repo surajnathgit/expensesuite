@@ -221,7 +221,7 @@ import ScheduleDemo from '../../components/ScheduleDemo'; // Adjust the import p
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/#about' },
-  // { label: 'Product Demo', path: '/productDemo' },
+  { label: 'Features', path: '/features' },
   { label: 'Contact', path: '/contact' },
 ];
 
