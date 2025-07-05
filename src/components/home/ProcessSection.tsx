@@ -323,237 +323,292 @@ const ProcessSection = () => {
             </Box>
           </motion.div>
 
-          <Grid container spacing={4} alignItems="start">
-            {/* Process Steps */}
-            <Grid item xs={12} lg={6} sx={{ display: 'flex', flexDirection: 'column', gap: '21px' }}>
-              {steps.map((step, index) => (
-                <motion.div variants={itemVariants} key={index}>
-                  <StyledCard
-                    active={activeStep === index}
-                    onMouseEnter={() => !isMobile && handleStepInteraction(index)}
-                    onMouseLeave={handleStepLeave}
-                    onClick={() => isMobile && handleStepInteraction(index)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
-                      e.key === 'Enter' && handleStepInteraction(index)
-                    }
-                  >
-                    <CardContent sx={{ display: 'flex', alignItems: 'flex-start', p: 3 }}>
-                      <Box sx={{ flexShrink: 0, mr: 2 }}>
-                        <Box
-                          sx={{
-                            width: 64,
-                            height: 64,
-                            borderRadius: 2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: activeStep === index ? step.color : 'rgba(255,255,255,0.1)',
-                            transition: 'all 0.3s ease',
-                            transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
-                          }}
-                        >
-                          <SvgIcon component={step.icon} sx={{ fontSize: 32, color: 'white' }} />
-                        </Box>
-                        {index < steps.length - 1 && (
-                          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                            <Box
-                              sx={{
-                                width: '2px',
-                                height: '32px',
-                                background: activeStep >= index ? step.color : 'rgba(255,255,255,0.2)',
-                                transition: 'all 0.3s ease',
-                              }}
-                            />
-                          </Box>
-                        )}
-                      </Box>
-                      <Box sx={{ flex: 1 }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                          <Chip
-                            label={String(index + 1).padStart(2, '0')}
-                            sx={{
-                              mr: 2,
-                              background: activeStep === index ? step.color : 'rgba(255,255,255,0.1)',
-                              color: 'white',
-                              fontWeight: 'bold',
-                            }}
-                          />
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              color: activeStep === index ? step.color : 'white',
-                              fontWeight: 'bold',
-                              fontSize: { xs: '1rem', md: '1.25rem' },
-                            }}
-                          >
-                            {step.label}
-                          </Typography>
-                        </Box>
-                        <animated.div
-                          style={{
-                            height: activeStep === index || isMobile ? 'auto' : 0,
-                            opacity: activeStep === index || isMobile ? 1 : 0,
-                            overflow: 'hidden',
-                            transition: 'all 0.3s ease-in-out',
-                          }}
-                        >
-                          <Typography
-                            variant="body2"
-                            sx={{ color: 'white', opacity: 0.8, fontSize: { xs: '0.8rem', md: '1rem' } }}
-                          >
-                            {step.description}
-                          </Typography>
-                        </animated.div>
-                      </Box>
-                    </CardContent>
-                  </StyledCard>
-                </motion.div>
-              ))}
-            </Grid>
+           <Grid
+  container
+  spacing={{ xs: 4, md: 6 }}
+  alignItems="flex-start"
+  sx={{ px: { xs: 2, sm: 3, md: 4 }, width: '100%', mx: 'auto' }}
+>
+  {/* Left Column – Steps */}
+  <Grid
+    item
+    xs={12}
+    md={6}
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: { xs: 3, sm: 4 },
+    }}
+  >
+    {steps.map((step, index) => (
+      <motion.div variants={itemVariants} key={index}>
+        <StyledCard
+          active={activeStep === index}
+          onMouseEnter={() => !isMobile && handleStepInteraction(index)}
+          onMouseLeave={handleStepLeave}
+          onClick={() => isMobile && handleStepInteraction(index)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
+            e.key === 'Enter' && handleStepInteraction(index)
+          }
+        >
+          <CardContent
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: { xs: 'center', sm: 'flex-start' },
+              gap: 2,
+              p: { xs: 2.5, sm: 3 },
+            }}
+          >
+            <Box sx={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Box
+                sx={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeStep === index ? step.color : 'rgba(255,255,255,0.1)',
+                  transition: '0.3s ease',
+                  transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
+                }}
+              >
+                <SvgIcon component={step.icon} sx={{ fontSize: 28, color: 'white' }} />
+              </Box>
+              {index < steps.length - 1 && (
+                <Box sx={{ display: { xs: 'none', sm: 'block' }, mt: 2 }}>
+                  <Box
+                    sx={{
+                      width: '2px',
+                      height: '32px',
+                      background: activeStep >= index ? step.color : 'rgba(255,255,255,0.2)',
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                </Box>
+              )}
+            </Box>
 
-            {/* CTA Card */}
-            <Grid item xs={12} lg={6}>
-              <motion.div variants={itemVariants}>
-                <CTACard sx={{ position: { lg: 'sticky' }, top: 8 }}>
-                  <CardContent sx={{ p: 4, textAlign: 'center' }}>
+            <Box sx={{ flex: 1, textAlign: { xs: 'center', sm: 'left' } }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: { xs: 'center', sm: 'flex-start' },
+                  gap: 1,
+                  mb: 1,
+                }}
+              >
+                <Chip
+                  label={String(index + 1).padStart(2, '0')}
+                  sx={{
+                    background: activeStep === index ? step.color : 'rgba(255,255,255,0.1)',
+                    color: '#fff',
+                    fontWeight: 'bold',
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: activeStep === index ? step.color : '#fff',
+                    fontWeight: 'bold',
+                    fontSize: { xs: '1rem', sm: '1.25rem' },
+                  }}
+                >
+                  {step.label}
+                </Typography>
+              </Box>
+
+              <animated.div
+                style={{
+                  height: activeStep === index || isMobile ? 'auto' : 0,
+                  opacity: activeStep === index || isMobile ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease-in-out',
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'white',
+                    opacity: 0.8,
+                    fontSize: { xs: '0.85rem', sm: '1rem' },
+                  }}
+                >
+                  {step.description}
+                </Typography>
+              </animated.div>
+            </Box>
+          </CardContent>
+        </StyledCard>
+      </motion.div>
+    ))}
+  </Grid>
+
+  {/* Right Column – CTA Card */}
+  <Grid item xs={12} md={6}>
+    <motion.div variants={itemVariants}>
+      <CTACard sx={{ position: { lg: 'sticky' }, top: 16 }}>
+        <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
+          <Typography
+            variant="h4"
+            sx={{
+              color: 'white',
+              mb: 4,
+              fontWeight: 'bold',
+              fontSize: { xs: '1.5rem', md: '2rem' },
+            }}
+          >
+            Start Automating Your Expenses Today!
+          </Typography>
+
+          {/* CTA Items */}
+          <Box sx={{ display: 'grid', gap: 2, mb: 4 }}>
+            {[
+              {
+                title: 'Book a Free Demo',
+                description: 'Experience how Expenses Suite can transform your financial processes.',
+                icon: BarChartIcon,
+              },
+              {
+                title: 'Consult Our Experts',
+                description: 'Get a tailored expense management strategy for your business.',
+                icon: LightbulbIcon,
+              },
+              {
+                title: 'Simplify Your Finances',
+                description: 'Reduce errors, save time, and boost efficiency with automation.',
+                icon: AutoAwesomeIcon,
+              },
+            ].map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  '&:hover': { background: 'rgba(255,255,255,0.15)', transform: 'translateY(-2px)' },
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                }}
+                role="button"
+                tabIndex={0}
+                onClick={() => alert(`${item.title} clicked`)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
+                  e.key === 'Enter' && alert(`${item.title} clicked`)
+                }
+              >
+                <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                  <SvgIcon component={item.icon} sx={{ fontSize: 24, color: 'white' }} />
+                  <Box sx={{ textAlign: 'left' }}>
                     <Typography
-                      variant="h4"
-                      sx={{ color: 'white', mb: 4, fontWeight: 'bold', fontSize: { xs: '1.5rem', md: '2rem' } }}
-                    >
-                      Start Automating Your Expenses Today!
-                    </Typography>
-                    <Box sx={{ display: 'grid', gap: 2, mb: 4 }}>
-                      {[
-                        {
-                          title: 'Book a Free Demo',
-                          description: 'Experience how Expenses Suite can transform your financial processes.',
-                          icon: BarChartIcon,
-                        },
-                        {
-                          title: 'Consult Our Experts',
-                          description: 'Get a tailored expense management strategy for your business.',
-                          icon: LightbulbIcon,
-                        },
-                        {
-                          title: 'Simplify Your Finances',
-                          description: 'Reduce errors, save time, and boost efficiency with automation.',
-                          icon: AutoAwesomeIcon,
-                        },
-                      ].map((item, index) => (
-                        <Box
-                          key={index}
-                          sx={{
-                            p: 2,
-                            borderRadius: 2,
-                            background: 'rgba(255,255,255,0.1)',
-                            border: '1px solid rgba(255,255,255,0.2)',
-                            '&:hover': { background: 'rgba(255,255,255,0.15)', transform: 'translateY(-2px)' },
-                            transition: 'all 0.3s ease',
-                            cursor: 'pointer',
-                          }}
-                          role="button"
-                          tabIndex={0}
-                          onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
-                            e.key === 'Enter' && alert(`${item.title} clicked`)
-                          }
-                          onClick={() => alert(`${item.title} clicked`)}
-                        >
-                          <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                            <SvgIcon component={item.icon} sx={{ fontSize: 24, color: 'white' }} />
-                            <Box sx={{ textAlign: 'left' }}>
-                              <Typography
-                                variant="subtitle1"
-                                sx={{ color: 'white', fontWeight: 'bold', fontSize: { xs: '0.9rem', md: '1rem' } }}
-                              >
-                                {item.title}
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: 'white', opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.9rem' } }}
-                              >
-                                {item.description}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </Box>
-                      ))}
-                    </Box>
-                    <Box
+                      variant="subtitle1"
                       sx={{
-                        p: 3,
-                        borderRadius: 2,
-                        background: 'rgba(255,255,255,0.1)',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                        mb: 4,
-                      }}
-                    >
-                      <Box
-                        component="a"
-                        href="tel:+919302075637"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: 2,
-                          color: 'white',
-                          mb: 2,
-                          '&:hover': { color: '#d8b4fe' },
-                          transition: 'all 0.3s ease',
-                        }}
-                      >
-                        <SvgIcon component={PhoneIcon} sx={{ fontSize: 24 }} />
-                        <Typography variant="body1" sx={{ fontWeight: 'medium', fontSize: { xs: '0.9rem', md: '1rem' } }}>
-                          +91 9302075637
-                        </Typography>
-                      </Box>
-                      <Box
-                        component="a"
-                        href="mailto:expensessuite@fincoopers.in"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: 2,
-                          color: 'white',
-                          '&:hover': { color: '#d8b4fe' },
-                          transition: 'all 0.3s ease',
-                        }}
-                      >
-                        <SvgIcon component={EmailIcon} sx={{ fontSize: 24 }} />
-                        <Typography variant="body1" sx={{ fontWeight: 'medium', fontSize: { xs: '0.9rem', md: '1rem' } }}>
-                          expensessuite@fincoopers.in
-                        </Typography>
-                      </Box>
-                    </Box>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      onClick={handleGetStarted}
-                      sx={{
-                        width: '100%',
-                        py: 2,
-                        borderRadius: '50px',
-                        background: 'white',
-                        color: '#7c3aed',
+                        color: 'white',
                         fontWeight: 'bold',
-                        textTransform: 'none',
-                        boxShadow: 6,
-                        '&:hover': {
-                          transform: 'scale(1.05)',
-                          boxShadow: 8,
-                          background: 'white',
-                        },
+                        fontSize: { xs: '0.9rem', md: '1rem' },
                       }}
                     >
-                      Get Started Now
-                    </Button>
-                  </CardContent>
-                </CTACard>
-              </motion.div>
-            </Grid>
-          </Grid>
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: 'white', opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.9rem' } }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+
+          {/* Contact */}
+          <Box
+            sx={{
+              p: 3,
+              borderRadius: 2,
+              background: 'rgba(255,255,255,0.1)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              mb: 4,
+            }}
+          >
+            <Box
+              component="a"
+              href="tel:+919302075637"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 2,
+                color: 'white',
+                mb: 2,
+                '&:hover': { color: '#d8b4fe' },
+              }}
+            >
+              <SvgIcon component={PhoneIcon} sx={{ fontSize: 24 }} />
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 'medium', fontSize: { xs: '0.9rem', md: '1rem' } }}
+              >
+                +91 9302075637
+              </Typography>
+            </Box>
+            <Box
+              component="a"
+              href="mailto:expensessuite@fincoopers.in"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 2,
+                color: 'white',
+                '&:hover': { color: '#d8b4fe' },
+              }}
+            >
+              <SvgIcon component={EmailIcon} sx={{ fontSize: 24 }} />
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 'medium', fontSize: { xs: '0.9rem', md: '1rem' } }}
+              >
+                expensessuite@fincoopers.in
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* CTA Button */}
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleGetStarted}
+            sx={{
+              width: '100%',
+              py: 2,
+              borderRadius: '50px',
+              background: 'white',
+              color: '#7c3aed',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              boxShadow: 6,
+              '&:hover': {
+                transform: 'scale(1.05)',
+                boxShadow: 8,
+              },
+            }}
+          >
+            Get Started Now
+          </Button>
+        </CardContent>
+      </CTACard>
+    </motion.div>
+  </Grid>
+</Grid>
+
         </motion.div>
       </Container>
     </Box>

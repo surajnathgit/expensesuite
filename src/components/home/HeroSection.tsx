@@ -248,7 +248,7 @@ const HeroSection = () => {
                     },
                   }}
                 >
-                  Expenses <span>Suite</span>
+                  Expense <span>Suite</span>
                 </Typography>
               </motion.div>
 

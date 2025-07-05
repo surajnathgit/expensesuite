@@ -14,7 +14,7 @@ const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'),
 
 export default function Home() {
   return (
-    <Box component="main" sx={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)' }}>
+    <Box component="main" sx={{ minHeight: '100vh',overflowX: 'hidden', background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)' }}>
       <EnhancedHeroSection />
       <EnhancedAboutSection />
       <EfficiencyImpactSection/>

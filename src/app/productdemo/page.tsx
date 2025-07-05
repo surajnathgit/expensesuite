@@ -87,92 +87,7 @@ const Features = () => {
     },
   };
 
-  // const featureData = [
-  //   {
-  //     title: 'OCR Receipt Scanning',
-  //     icon: <ReceiptIcon sx={{ fontSize: 32 }} />,
-  //     color: '#4E36FF',
-  //     gradient: 'linear-gradient(to right, #3B82F6, #8B5CF6)',
-  //     features: [
-  //       'High-accuracy receipt scanning with AI',
-  //       'Automatic categorization of expenses',
-  //       'Multi-format receipt support',
-  //       'Error detection and correction',
-  //       'Real-time data extraction',
-  //     ],
-  //     highlights: ['AI-Powered', 'Accurate', 'Automated'],
-  //   },
-  //   {
-  //     title: 'Approval Workflows',
-  //     icon: <CheckCircleIcon sx={{ fontSize: 32 }} />,
-  //     color: '#FF6B6B',
-  //     gradient: 'linear-gradient(to right, #EC4899, #EF4444)',
-  //     features: [
-  //       'Customizable multi-level approval processes',
-  //       'Automated routing to approvers',
-  //       'Approval hierarchy management',
-  //       'Audit trails for compliance',
-  //       'Real-time approval status tracking',
-  //     ],
-  //     highlights: ['Customizable', 'Automated', 'Compliant'],
-  //   },
-  //   {
-  //     title: 'Real-Time Tracking',
-  //     icon: <TrendingUpIcon sx={{ fontSize: 32 }} />,
-  //     color: '#10B981',
-  //     gradient: 'linear-gradient(to right, #10B981, #059669)',
-  //     features: [
-  //       'Live expense and budget dashboards',
-  //       'Real-time spending alerts',
-  //       'Customizable spending insights',
-  //       'Historical trend analysis',
-  //       'Mobile access to tracking',
-  //     ],
-  //     highlights: ['Real-Time', 'Insightful', 'Mobile'],
-  //   },
-  //   {
-  //     title: 'Accounting Integration',
-  //     icon: <BusinessIcon sx={{ fontSize: 32 }} />,
-  //     color: '#8B5CF6',
-  //     gradient: 'linear-gradient(to right, #8B5CF6, #7C3AED)',
-  //     features: [
-  //       'Seamless sync with QuickBooks',
-  //       'Integration with Xero and other platforms',
-  //       'Automated data export',
-  //       'API support for custom integrations',
-  //       'Secure data transfer',
-  //     ],
-  //     highlights: ['Seamless', 'Secure', 'Automated'],
-  //   },
-  //   {
-  //     title: 'Mobile App',
-  //     icon: <SmartphoneIcon sx={{ fontSize: 32 }} />,
-  //     color: '#F59E0B',
-  //     gradient: 'linear-gradient(to right, #F59E0B, #F97316)',
-  //     features: [
-  //       'Receipt uploads on the go',
-  //       'Real-time expense submission',
-  //       'Offline mode functionality',
-  //       'Secure access with biometrics',
-  //       'Push notifications for updates',
-  //     ],
-  //     highlights: ['Mobile-First', 'Secure', 'Offline'],
-  //   },
-  //   {
-  //     title: 'Actionable Analytics',
-  //     icon: <BarChartIcon sx={{ fontSize: 32 }} />,
-  //     color: '#06B6D4',
-  //     gradient: 'linear-gradient(to right, #06B6D4, #3B82F6)',
-  //     features: [
-  //       'Key expense metrics and trends',
-  //       'Customizable financial reports',
-  //       'Real-time dashboard updates',
-  //       'Predictive budgeting insights',
-  //       'Compliance monitoring',
-  //     ],
-  //     highlights: ['Data-Driven', 'Predictive', 'Customizable'],
-  //   },
-  // ];
+
   const featureData = [
   {
     title: 'Smart Receipt Management',
@@ -257,7 +172,7 @@ const Features = () => {
         background: 'linear-gradient(to bottom right, #0F172A, #2D1B5E, #0F172A)',
         color: '#fff',
         position: 'relative',
-        overflow: 'hidden relations',
+        overflow: 'hidden',
       }}
     >
       {/* Animated Background Elements */}
@@ -328,7 +243,11 @@ const Features = () => {
         </Box>
       </Box>
 
-      <Box sx={{ position: 'relative', zIndex: 10 }}>
+      <Box 
+       sx={{ position: 'relative', zIndex: 10 }}
+      
+ 
+      >
         {/* Hero Section */}
         <Box sx={{ pt: { xs: 16, lg: 24 }, pb: { xs: 12, lg: 20 }, px: { xs: 4, sm: 6, lg: 8 } }}>
           <motion.section
@@ -509,13 +428,13 @@ const Features = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      style={{ height: '100%' }} // ✅ Makes sure the motion.div fills parent height
+                      style={{ height: '100%' }} 
                     >
                       <AdditionalFeatureCard
                         sx={{
                           display: 'flex',
                           flexDirection: 'column',
-                          height: '100%', // ✅ Full height to match across all cards
+                          height: '100%', 
                         }}
                       >
                         <CardContent sx={{ p: 4, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -660,4 +579,5 @@ const Features = () => {
 };
 
 export default Features;
+
 
