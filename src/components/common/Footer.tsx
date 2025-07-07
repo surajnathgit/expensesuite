@@ -103,9 +103,9 @@ const Footer = () => {
                     About Us
                   </Typography>
                 </Link>
-                <Link href="/features" passHref style={{ textDecoration: 'none' }}>
+                <Link href="/productdemo" passHref style={{ textDecoration: 'none' }}>
                   <Typography variant="body2" color="grey.400" sx={{ '&:hover': { color: 'primary.main' } }}>
-                    Features
+                    Product Demo
                   </Typography>
                 </Link>
                 <Link href="/#use-cases" passHref style={{ textDecoration: 'none' }}>
