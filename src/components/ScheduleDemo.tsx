@@ -154,7 +154,9 @@ import {
   Checkbox,
   IconButton,
   MenuItem,
-  Stack
+  Grid,
+  Alert,
+  Snackbar
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
@@ -167,6 +169,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
     companyName: '',
     jobTitle: '',
     industryType: '',
+    otherIndustry: '',
     phone: '',
     numberOfEmployees: '',
     howDidYouHearAboutUs: '',
@@ -174,6 +177,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
   });
 
   const [formErrors, setFormErrors] = useState<{ [key: string]: boolean }>({});
+const [showThankYouPopup, setShowThankYouPopup] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -190,15 +194,24 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     const requiredFields = ['fullName', 'workEmail', 'companyName', 'industryType', 'jobTitle', 'phone', 'numberOfEmployees'];
+    const phonePattern = /^[6-9]\d{9}$/;
 
+if (!phonePattern.test(form.phone)) {
+  setFormErrors(prev => ({ ...prev, phone: true }));
+  return;
+}
     const errors: { [key: string]: boolean } = {};
     requiredFields.forEach(field => {
       if (!form[field as keyof typeof form]) {
         errors[field] = true;
       }
     });
+    // Validate "Other" industry input if selected
+  if (form.industryType === 'Other' && !form.otherIndustry.trim()) {
+    errors.otherIndustry = true;
+  }
 
     if (!form.consent) {
       alert('You must agree to the terms and conditions before submitting.');
@@ -221,7 +234,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
         }
       );
       console.log('Server Response:', response.data);
-      alert('Form submitted successfully!');
+      // alert('Form submitted successfully!');
       // Reset the form
        setForm({
        fullName: '',
@@ -229,6 +242,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
        companyName: '',
        jobTitle: '',
        industryType: '',
+       otherIndustry: '',
        phone: '',
        numberOfEmployees: '',
        howDidYouHearAboutUs: '',
@@ -237,6 +251,10 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
       setFormErrors({}); // Optional
 
       onClose();
+      
+    setShowThankYouPopup(true);
+setTimeout(() => setShowThankYouPopup(false), 3000);
+
     } catch (error: any) {
       console.error('Submission failed:', error.response?.data || error.message);
       alert('There was an error submitting the form.');
@@ -244,6 +262,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
   };
 
   return (
+    <>
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>
         Schedule a Demo
@@ -253,7 +272,9 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
       </DialogTitle>
 
       <DialogContent>
-        <Stack spacing={2} mt={1}>
+        {/* <Stack spacing={2} mt={1}> */}
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} >
           <TextField
             label="Name"
             name="fullName"
@@ -262,8 +283,8 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             onChange={handleChange}
             error={formErrors.fullName}
             helperText={formErrors.fullName ? 'Required' : ''}
-          />
-          <TextField
+          /></Grid>
+         <Grid item xs={12} sm={6} > <TextField
             label="Email"
             name="workEmail"
             type="email"
@@ -272,8 +293,8 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             onChange={handleChange}
             error={formErrors.workEmail}
             helperText={formErrors.workEmail ? 'Required' : ''}
-          />
-          <TextField
+          /></Grid>
+         <Grid item xs={12} sm={6} > <TextField
             label="Company Name"
             name="companyName"
             fullWidth
@@ -281,17 +302,37 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             onChange={handleChange}
             error={formErrors.companyName}
             helperText={formErrors.companyName ? 'Required' : ''}
-          />
-          <TextField
+          /></Grid>
+          <Grid item xs={12} sm={6} > <TextField
             label="Industry Type"
             name="industryType"
+            select
             fullWidth
             value={form.industryType}
             onChange={handleChange}
             error={formErrors.industryType}
             helperText={formErrors.industryType ? 'Required' : ''}
-          />
-          <TextField
+          >
+             <MenuItem value="Finance">Finance</MenuItem>
+            <MenuItem value="Health care">Health care</MenuItem>
+            <MenuItem value="IT">IT</MenuItem>
+            <MenuItem value="Education">Education</MenuItem>
+             <MenuItem value="Other">Other</MenuItem>
+          </TextField></Grid>
+          {form.industryType === 'Other' && (
+  <Grid item xs={12} sm={6}>
+    <TextField
+      label="Specify Industry"
+      name="otherIndustry"
+      fullWidth
+      value={form.otherIndustry}
+      onChange={handleChange}
+      error={formErrors.otherIndustry}
+      helperText={formErrors.otherIndustry ? 'Please specify your industry' : ''}
+    />
+ </Grid>
+)} 
+          <Grid item xs={12} sm={6} ><TextField
             label="Job Title"
             name="jobTitle"
             fullWidth
@@ -299,17 +340,26 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             onChange={handleChange}
             error={formErrors.jobTitle}
             helperText={formErrors.jobTitle ? 'Required' : ''}
-          />
-          <TextField
-            label="Phone Number"
-            name="phone"
-            fullWidth
-            value={form.phone}
-            onChange={handleChange}
-            error={formErrors.phone}
-            helperText={formErrors.phone ? 'Required' : ''}
-          />
-          <TextField
+          /></Grid>
+        
+        <Grid item xs={12} sm={6} > <TextField
+          label="Phone Number"
+          name="phone"
+          fullWidth
+          required
+          value={form.phone}
+          onChange={handleChange}
+          error={formErrors.phone}
+           helperText={formErrors.phone ? 'Enter a valid 10-digit phone number' : ''}
+           inputProps={{
+           pattern: '^[6-9][0-9]{9}$',
+           maxLength: 10,
+           inputMode: 'numeric'
+           }}
+          /></Grid>
+
+
+         <Grid item xs={12} sm={6} > <TextField
             label="Number of Employees"
             name="numberOfEmployees"
             select
@@ -323,19 +373,27 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             <MenuItem value="50-100">50–100</MenuItem>
             <MenuItem value="100-200">100–200</MenuItem>
             <MenuItem value="200+">200+</MenuItem>
-          </TextField>
+          </TextField></Grid>
 
-          <TextField
+          <Grid item xs={12} sm={6} ><TextField
             label="How Did You Hear About Us"
             name="howDidYouHearAboutUs"
+            select
             fullWidth
             multiline
             rows={3}
             value={form.howDidYouHearAboutUs}
             onChange={handleChange}
-          />
+            error={formErrors.howDidYouHearAboutU}
+            helperText={formErrors.howDidYouHearAboutU ? 'Required' : ''}
+          >
+             <MenuItem value="LinkedIn">LinkedIn</MenuItem>
+            <MenuItem value="HR_Conclave">HR Conclave</MenuItem>
+            <MenuItem value="Other">Other</MenuItem>
+            
+          </TextField></Grid>
 
-          <FormControlLabel
+          <FormControlLabel 
             control={
               <Checkbox
                 checked={form.consent}
@@ -345,7 +403,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
             }
             label="I agree to the terms and conditions"
           />
-        </Stack>
+        {/* </Stack> */}</Grid>
       </DialogContent>
 
       <DialogActions sx={{ p: 2 }}>
@@ -355,5 +413,22 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
         </Button>
       </DialogActions>
     </Dialog>
+    {/* <Snackbar
+  open={showSnackbar}
+  anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+>
+  <Alert severity="success" variant="filled" sx={{ width: '100%' }}>
+    Thank you! Your form has been submitted.
+  </Alert>
+</Snackbar> */}
+<Dialog open={showThankYouPopup} onClose={() => setShowThankYouPopup(false)}>
+  <DialogTitle>🎉 Thank You!</DialogTitle>
+  <DialogContent sx={{ textAlign: 'center', pb: 2 }}>
+    Your form has been submitted successfully.
+  </DialogContent>
+</Dialog>
+</>
+    
+
   );
 }
