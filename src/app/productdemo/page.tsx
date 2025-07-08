@@ -18,6 +18,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CloudIcon from '@mui/icons-material/Cloud';
 import StarIcon from '@mui/icons-material/Star';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ScheduleDemo from '@/components/ScheduleDemo';
 
 // Styled components for MUI
 const FeatureCard = styled(Card)(({ theme }) => ({
@@ -62,7 +63,7 @@ const GradientTypography = styled(Typography)(({ theme }) => ({
 const Features = () => {
   const { scrollY } = useScroll();
   const headerOpacity = useTransform(scrollY, [0, 100], [1, 0.95]);
-
+  const [demoOpen, setDemoOpen] = useState(false);
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -166,6 +167,7 @@ const Features = () => {
   ];
 
   return (
+    <>
     <Box
       sx={{
         minHeight: '100vh',
@@ -552,6 +554,7 @@ const Features = () => {
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button
                         variant="outlined"
+                        onClick={() => setDemoOpen(true)}
                         sx={{
                           px: 4,
                           py: 2,
@@ -563,7 +566,8 @@ const Features = () => {
                           textTransform: 'none',
                           '&:hover': { borderColor: 'rgba(255, 255, 255, 0.4)', background: 'rgba(255, 255, 255, 0.05)' },
                         }}
-                      >
+                      > 
+                     
                         Schedule Demo
                       </Button>
                     </motion.div>
@@ -575,6 +579,9 @@ const Features = () => {
         </Box>
       </Box>
     </Box>
+     {/* Popup Schedule Demo Dialog */}
+          <ScheduleDemo open={demoOpen} onClose={() => setDemoOpen(false)} />
+    </>
   );
 };
 
