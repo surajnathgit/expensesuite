@@ -415,7 +415,7 @@ const Features = () => {
             <Container maxWidth="xl">
               <Box sx={{ textAlign: 'center', mb: { xs: 8, lg: 12 } }}>
                 <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#fff', mb: 2 }}>
-                  Why Choose Expenses Suite?
+                  Why Choose Expense Suite?
                 </Typography>
                 <Typography variant="h6" sx={{ color: '#D1D5DB', maxWidth: 640, mx: 'auto', lineHeight: 1.6 }}>
                   Built for modern businesses with enterprise-grade expense management features

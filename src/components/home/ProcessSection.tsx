@@ -324,35 +324,35 @@ const ProcessSection = () => {
           </motion.div>
 
            <Grid
-  container
-  spacing={{ xs: 4, md: 6 }}
-  alignItems="flex-start"
-  sx={{ px: { xs: 2, sm: 3, md: 4 }, width: '100%', mx: 'auto' }}
->
-  {/* Left Column – Steps */}
-  <Grid
-    item
-    xs={12}
-    md={6}
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: { xs: 3, sm: 4 },
-    }}
-  >
-    {steps.map((step, index) => (
-      <motion.div variants={itemVariants} key={index}>
-        <StyledCard
-          active={activeStep === index}
-          onMouseEnter={() => !isMobile && handleStepInteraction(index)}
-          onMouseLeave={handleStepLeave}
-          onClick={() => isMobile && handleStepInteraction(index)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
-            e.key === 'Enter' && handleStepInteraction(index)
-          }
-        >
+            container
+            spacing={{ xs: 4, md: 6 }}
+            alignItems="flex-start"
+            sx={{ px: { xs: 2, sm: 3, md: 4 }, width: '100%', mx: 'auto' }}
+            >
+               {/* Left Column – Steps */}
+              <Grid
+                item
+                 xs={12}
+                 md={6}
+                 sx={{
+                display: 'flex',
+                  flexDirection: 'column',
+                  gap: { xs: 3, sm: 4 },
+                 }}
+              >
+                  {steps.map((step, index) => (
+                <motion.div variants={itemVariants} key={index}>
+            <StyledCard
+             active={activeStep === index}
+              onMouseEnter={() => !isMobile && handleStepInteraction(index)}
+              onMouseLeave={handleStepLeave}
+              onClick={() => isMobile && handleStepInteraction(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
+              e.key === 'Enter' && handleStepInteraction(index)
+               }
+             >
           <CardContent
             sx={{
               display: 'flex',
@@ -551,13 +551,13 @@ const ProcessSection = () => {
                 '&:hover': { color: '#d8b4fe' },
               }}
             >
-              <SvgIcon component={PhoneIcon} sx={{ fontSize: 24 }} />
-              <Typography
+              {/* <SvgIcon component={PhoneIcon} sx={{ fontSize: 24 }} /> */}
+              {/* <Typography
                 variant="body1"
                 sx={{ fontWeight: 'medium', fontSize: { xs: '0.9rem', md: '1rem' } }}
               >
                 +91 9302075637
-              </Typography>
+              </Typography> */}
             </Box>
             <Box
               component="a"

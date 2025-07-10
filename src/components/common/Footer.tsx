@@ -11,7 +11,8 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, LinkedIn, Instagram } from '@mui/icons-material';
+import { Facebook,LinkedIn, Instagram } from '@mui/icons-material';
+import XIcon from '@mui/icons-material/X';
 import { motion } from 'framer-motion';
 
 // FadeIn animation component
@@ -60,18 +61,18 @@ const Footer = () => {
                     letterSpacing: '-0.5px',
                   }}
                 >
-                  Expenses Suite
+                  Expense Suite
                 </Typography>
               </Box>
               <Typography variant="body2" color="grey.400" sx={{ mb: 3 }}>
-                Expenses Suite is a technology platform specializing in AI-powered expense management solutions. We help businesses automate expense tracking, approval workflows, and reimbursement processes.
+                Expense Suite is a technology platform specializing in AI-powered expense management solutions. We help businesses automate expense tracking, approval workflows, and reimbursement processes.
               </Typography>
               <Box display="flex" gap={1}>
                 <IconButton size="small" sx={{ color: 'white', '&:hover': { color: 'primary.main' } }}>
                   <Facebook />
                 </IconButton>
                 <IconButton size="small" sx={{ color: 'white', '&:hover': { color: 'primary.main' } }}>
-                  <Twitter />
+                  <XIcon />
                 </IconButton>
                 <IconButton
                   size="small"
@@ -108,11 +109,11 @@ const Footer = () => {
                     Product Demo
                   </Typography>
                 </Link>
-                <Link href="/#use-cases" passHref style={{ textDecoration: 'none' }}>
+                {/* <Link href="/#use-cases" passHref style={{ textDecoration: 'none' }}>
                   <Typography variant="body2" color="grey.400" sx={{ '&:hover': { color: 'primary.main' } }}>
                     How It Works
                   </Typography>
-                </Link>
+                </Link> */}
               </Box>
             </FadeIn>
           </Grid>
@@ -162,11 +163,11 @@ const Footer = () => {
                     Email: expensessuite@fincoopers.in
                   </Typography>
                 </Link>
-                <Link href="tel:+919302075637" style={{ textDecoration: 'none' }}>
+                {/* <Link href="tel:+91" style={{ textDecoration: 'none' }}>
                   <Typography variant="body2" color="grey.400">
-                    Phone: +91 9302075637
+                    Phone: +91 
                   </Typography>
-                </Link>
+                </Link> */}
               </Box>
             </FadeIn>
           </Grid>
@@ -176,10 +177,10 @@ const Footer = () => {
 
         <Box display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap">
           <Typography variant="body2" color="grey.500">
-            © {new Date().getFullYear()} Expenses Suite. All rights reserved.
+            © {new Date().getFullYear()} Expense Suite. All rights reserved.
           </Typography>
           <Box display="flex" gap={3}>
-            <Link href="#" passHref style={{ textDecoration: 'none' }}>
+            {/* <Link href="#" passHref style={{ textDecoration: 'none' }}>
               <Typography variant="body2" color="grey.500" sx={{ '&:hover': { color: 'primary.main' } }}>
                 Privacy Policy
               </Typography>
@@ -188,7 +189,7 @@ const Footer = () => {
               <Typography variant="body2" color="grey.500" sx={{ '&:hover': { color: 'primary.main' } }}>
                 Terms of Service
               </Typography>
-            </Link>
+            </Link> */}
           </Box>
         </Box>
       </Container>

@@ -368,7 +368,7 @@ const ChooseUsSection = () => {
                   },
                 }}
               >
-                Why Choose <span>Expenses Suite?</span>
+                Why Choose <span>Expense Suite?</span>
               </Typography>
               <Typography
                 sx={{
