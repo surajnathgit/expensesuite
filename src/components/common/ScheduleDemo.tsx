@@ -518,11 +518,11 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
 
   return (
     <>
-    <Dialog
+    {/* <Dialog
       open={open}
       onClose={onClose}
       fullWidth
-      maxWidth="sm"
+      maxWidth={"sm"}
       PaperProps={{
         sx: {
           borderRadius: 3,
@@ -533,7 +533,25 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
           color: 'white'
         }
       }}
+    > */}
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth={false} 
+      PaperProps={{
+      sx: {
+      width: { xs: '95vw', sm: '90vw', md: '700px' }, // Responsive width
+      maxWidth: '95vw', // ensures it never overflows
+      borderRadius: 3,
+      px: { xs: 2, sm: 4 },
+      py: { xs: 2, sm: 4 },
+      background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
+      color: 'white',
+        },
+      }}
     >
+     
       <DialogTitle sx={{ fontWeight: 'bold', fontSize: '1.25rem', color: 'white' }}>
         Schedule a Demo
         <IconButton onClick={onClose} sx={{ position: 'absolute', top: 8, right: 8, color: 'white' }}>
@@ -768,6 +786,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
           Submit
         </Button>
       </DialogActions>
+      
     </Dialog>
     <Dialog open={showThankYouPopup} onClose={() => setShowThankYouPopup(false)}>
       <DialogTitle>🎉 Thank You!</DialogTitle>

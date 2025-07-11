@@ -5,7 +5,7 @@ import { PlayArrow, ArrowForward, TrendingUp, Security, Speed } from '@mui/icons
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
-import ScheduleDemo from '../../components/ScheduleDemo';
+import ScheduleDemo from '../common/ScheduleDemo';
 
 
 const HeroSection = () => {

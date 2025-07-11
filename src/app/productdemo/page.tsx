@@ -18,7 +18,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CloudIcon from '@mui/icons-material/Cloud';
 import StarIcon from '@mui/icons-material/Star';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ScheduleDemo from '@/components/ScheduleDemo';
+import ScheduleDemo from '@/components/common/ScheduleDemo';
 
 // Styled components for MUI
 const FeatureCard = styled(Card)(({ theme }) => ({

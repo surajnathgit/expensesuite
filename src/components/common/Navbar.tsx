@@ -18,7 +18,8 @@ import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import ScheduleDemo from '../../components/ScheduleDemo'; // Adjust the import path as necessary
+import ScheduleDemo from './ScheduleDemo'; // Adjust the import path as necessary
+
 
 const navItems = [
   { label: 'Home', path: '/' },

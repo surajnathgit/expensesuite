@@ -68,12 +68,17 @@ const Footer = () => {
                 Expense Suite is a technology platform specializing in AI-powered expense management solutions. We help businesses automate expense tracking, approval workflows, and reimbursement processes.
               </Typography>
               <Box display="flex" gap={1}>
+                <Link href='https://www.facebook.com/share/16cozxSfFt/?mibextid=wwXIfr'>
                 <IconButton size="small" sx={{ color: 'white', '&:hover': { color: 'primary.main' } }}>
                   <Facebook />
                 </IconButton>
+                </Link>
+                <Link href=''>
                 <IconButton size="small" sx={{ color: 'white', '&:hover': { color: 'primary.main' } }}>
                   <XIcon />
                 </IconButton>
+                </Link>
+                <Link href='https://www.linkedin.com/company/fin-coopers-tech-india-private-limited/?viewAsMember=true'>
                 <IconButton
                   size="small"
                   sx={{
@@ -82,13 +87,16 @@ const Footer = () => {
                       color: 'primary.main'
                     }
                   }}
-                  onClick={() => window.open("https://www.linkedin.com/company/expenses-suite/about/", "_blank")}
+                  // onClick={() => window.open("https://www.linkedin.com/company/expenses-suite/about/", "_blank")}
                 >
                   <LinkedIn />
                 </IconButton>
+                </Link>
+                <Link href='https://www.instagram.com/fincoopers.tech?igsh=MXM1aTN3eno3Y3Vobg%3D%3D&utm_source=qr'>
                 <IconButton size="small" sx={{ color: 'white', '&:hover': { color: 'primary.main' } }}>
                   <Instagram />
                 </IconButton>
+                </Link>
               </Box>
             </FadeIn>
           </Grid>
