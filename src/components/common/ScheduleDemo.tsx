@@ -495,26 +495,82 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
     }
   };
 
+  // const textFieldStyle = {
+  //   '& .MuiInputBase-root': {
+  //     color: 'white',
+      
+  //      background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
+  //   },
+  //   '& .MuiInputLabel-root': {
+  //     color: 'white'
+  //   },
+  //   '& .MuiInputLabel-root.Mui-focused': {
+  //     color: 'white'
+  //   },
+  //   '& .MuiOutlinedInput-root': {
+  //     '& fieldset': { borderColor: 'white' },
+  //     '&:hover fieldset': { borderColor: '#BBDEFB' },
+  //     '&.Mui-focused fieldset': { borderColor: 'white' }
+  //   },
+  //   '& .MuiSvgIcon-root': { color: 'white' },
+  //   '& .MuiFormHelperText-root': { color: '#FFCDD2' },
+  //   '& input:-webkit-autofill':{
+  //     WebkitBoxShadow:'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
+  //     WebkitTextFillColor:'#fff',
+  //     transition:'background-color 5000s ease-in-out 0s'
+  //   }
+  // };
   const textFieldStyle = {
-    '& .MuiInputBase-root': {
-      color: 'white',
-      // backgroundColor: 'rgba(255, 255, 255, 0.1)'
-       background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
+  '& .MuiOutlinedInput-root': {
+    backgroundColor: '#241d78',
+    color: '#fff',
+
+    '& fieldset': {
+      borderColor: '#fff',
     },
-    '& .MuiInputLabel-root': {
-      color: 'white'
+    '&:hover fieldset': {
+      borderColor: '#60A5FA',
     },
-    '& .MuiInputLabel-root.Mui-focused': {
-      color: 'white'
+    '&.Mui-focused fieldset': {
+      borderColor: '#fff',
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': { borderColor: 'white' },
-      '&:hover fieldset': { borderColor: '#BBDEFB' },
-      '&.Mui-focused fieldset': { borderColor: 'white' }
+
+    '& input': {
+      color: '#fff !important',
+      WebkitTextFillColor: '#fff !important', // For Chrome autofill
+      caretColor: '#fff',
+      transition: 'color 0s ease 0s',
     },
-    '& .MuiSvgIcon-root': { color: 'white' },
-    '& .MuiFormHelperText-root': { color: '#FFCDD2' }
-  };
+
+    '&.Mui-focused input': {
+      color: '#fff !important',
+    },
+  },
+
+  '& .MuiInputLabel-root': {
+    color: '#fff',
+  },
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: '#fff',
+  },
+
+  '& .MuiFormHelperText-root': {
+    color: '#FFCDD2',
+  },
+
+  '& .MuiSvgIcon-root': {
+    color: '#fff',
+  },
+
+  '& input:-webkit-autofill': {
+    boxShadow: '0 0 0 1000px #241d78 inset',
+    WebkitBoxShadow: '0 0 0 1000px #241d78 inset',
+    WebkitTextFillColor: '#fff !important',
+    caretColor: '#fff',
+    borderRadius: '0px',
+  },
+};
+
 
   return (
     <>
@@ -568,11 +624,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               name="fullName"
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.fullName}
               onChange={handleChange}
               error={formErrors.fullName}
               helperText={formErrors.fullName ? 'Required' : ''}
+              inputProps={{
+              spellCheck: false,
+               style: { color: '#fff' }, // ✅ direct inline backup
+               }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             />
@@ -584,11 +644,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               type="email"
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.workEmail}
               onChange={handleChange}
               error={formErrors.workEmail}
               helperText={formErrors.workEmail ? 'Enter valid email' : ''}
+              inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             />
@@ -601,11 +665,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               name="companyName"
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.companyName}
               onChange={handleChange}
               error={formErrors.companyName}
               helperText={formErrors.companyName ? 'Required' : ''}
+              inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             />
@@ -617,11 +685,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               select
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.industryType}
               onChange={handleChange}
               error={formErrors.industryType}
               helperText={formErrors.industryType ? 'Required' : ''}
+              inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             >
@@ -638,11 +710,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
                 name="OtherIndustry"
                 fullWidth
                 required
-                autoComplete="off"
+                // autoComplete="off"
                 value={form.OtherIndustry}
                 onChange={handleChange}
                 error={formErrors.OtherIndustry}
                 helperText={formErrors.OtherIndustry ? 'Please specify your industry' : ''}
+                inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
                 InputLabelProps={{ shrink: undefined }}
                 sx={textFieldStyle}
               />
@@ -656,11 +732,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               name="jobTitle"
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.jobTitle}
               onChange={handleChange}
               error={formErrors.jobTitle}
               helperText={formErrors.jobTitle ? 'Required' : ''}
+              inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             />
@@ -671,7 +751,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               name="phoneNumber"
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.phoneNumber}
               onChange={handleChange}
               error={formErrors.phoneNumber}
@@ -683,6 +763,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
                   : ''
               }
               inputProps={{
+                style: { color: '#fff' },
                 pattern: '^[6-9][0-9]{9}$',
                 maxLength: 10,
                 inputMode: 'numeric' as const
@@ -700,11 +781,15 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               select
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.numberOfEmployees}
               onChange={handleChange}
               error={formErrors.numberOfEmployees}
               helperText={formErrors.numberOfEmployees ? 'Required' : ''}
+              inputProps={{
+    spellCheck: false,
+    style: { color: '#fff' }, // ✅ direct inline backup
+  }}
               InputLabelProps={{ shrink: undefined }}
               sx={textFieldStyle}
             >
@@ -721,7 +806,7 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
               select
               fullWidth
               required
-              autoComplete="off"
+              // autoComplete="off"
               value={form.howDidYouHearAboutUs}
               onChange={handleChange}
               error={formErrors.howDidYouHearAboutUs}
