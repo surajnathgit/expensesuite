@@ -247,8 +247,8 @@
 
 //       <Box 
 //        sx={{ position: 'relative', zIndex: 10 }}
-      
- 
+
+
 //       >
 //         {/* Hero Section */}
 //         <Box sx={{ pt: { xs: 16, lg: 24 }, pb: { xs: 12, lg: 20 }, px: { xs: 4, sm: 6, lg: 8 } }}>
@@ -402,7 +402,7 @@
 //             </Container>
 //           </motion.section>
 //         </Box>
-                  
+
 
 //         {/* Additional Features Section */}
 //         <Box sx={{ py: { xs: 12, lg: 20 }, px: { xs: 4, sm: 6, lg: 8 } }}>
@@ -567,7 +567,7 @@
 //                           '&:hover': { borderColor: 'rgba(255, 255, 255, 0.4)', background: 'rgba(255, 255, 255, 0.05)' },
 //                         }}
 //                       > 
-                     
+
 //                         Schedule Demo
 //                       </Button>
 //                     </motion.div>
@@ -597,14 +597,14 @@
 
 
 
-
 'use client';
 
 import React from 'react';
 import { Box, Grid, Typography, Chip, Container, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import mock from '../../../public/images/mock.png'
+import mob from '../../../public/images/mob.png';
+import lapimg from '../../../public/images/lapimg.png';
 
 const features = [
   'Smart Expense Tracking',
@@ -620,7 +620,13 @@ export default function ProductPage() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)', py: { xs: 8, md: 12 }, color: 'white' }}>
+    <Box
+      sx={{
+        background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
+        py: { xs: 8, md: 12 },
+        color: 'white',
+      }}
+    >
       <Container>
         <Grid container spacing={6} alignItems="center">
           {/* LEFT SIDE – FEATURES */}
@@ -631,11 +637,11 @@ export default function ProductPage() {
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
             >
-              <Typography variant="h3" fontWeight="bold" gutterBottom>
+              <Typography variant="h3" fontWeight="bold" mb={2}>
                 All-in-One Expense Management
               </Typography>
 
-              <Typography variant="body1" color="grey.400" mb={4}>
+              <Typography variant="body1" color="grey.400" mb={3}>
                 ExpenseSuite helps individuals and teams take control of their spending — fast, simple, and automated.
               </Typography>
 
@@ -654,7 +660,7 @@ export default function ProductPage() {
                       fontSize: '1rem',
                       borderRadius: 2,
                       width: 'fit-content',
-                      bgcolor: 'rgba(255,255,255,0.04)',
+                      
                     }}
                   />
                 ))}
@@ -662,34 +668,76 @@ export default function ProductPage() {
             </MotionBox>
           </Grid>
 
-          {/* RIGHT SIDE – IMAGE */}
+          {/* RIGHT SIDE – MOBILE IMAGE */}
+          <Grid item xs={12} md={6}>
+            <Box
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: { xs: 400, sm: 500, md: 600, lg: 700 },
+                borderRadius: 4,
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
+              }}
+            >
+              <Image
+                src={mob}
+                alt="ExpenseSuite Mobile Demo"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* SECOND ROW – LAPTOP IMAGE & "Why Choose" CONTENT */}
+        <Grid container spacing={6} alignItems="center" mt={10}>
+          {/* LEFT – LAPTOP IMAGE */}
+          <Grid item xs={12} md={6}>
+            <Box
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: { xs: 300, sm: 400, md: 500 },
+
+              }}
+            >
+              <Image
+                src={lapimg}
+                alt="ExpenseSuite Laptop Demo"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+          </Grid>
+
+          {/* RIGHT – WHY CHOOSE CONTENT */}
           <Grid item xs={12} md={6}>
             <MotionBox
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              sx={{
-                borderRadius: 4,
-                overflow: 'hidden',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                maxWidth: 400,
-                mx: 'auto',
-              }}
             >
-              {/* <img
-                src="/assets/mock.png" // ⬅️ Replace with your image path
-                alt="ExpenseSuite Demo"
-                style={{ width: '100%', display: 'block', borderRadius: 16 }}
-              /> */}
-              <Image
-              src={mock}
-              alt="ExpenseSuite Demo"
-              style={{ width: '100%', display: 'block', borderRadius: 16 }}
-              />
+              <Typography variant="h4" fontWeight="bold" mb={2}>
+                Why Choose ExpenseSuite?
+              </Typography>
+
+              <Typography variant="body1" color="grey.400" mb={3}>
+                Because modern finance demands smarter tools — not spreadsheets.
+              </Typography>
+
+              <Box display="flex" flexDirection="column" gap={1.5}>
+                <Typography variant="body1">✅ One platform for personal & business expenses</Typography>
+                <Typography variant="body1">✅ AI-powered receipt scanning</Typography>
+                <Typography variant="body1">✅ Real-time budget insights</Typography>
+                <Typography variant="body1">✅ Collaborate with your team</Typography>
+                <Typography variant="body1">✅ Access from any device securely</Typography>
+              </Box>
             </MotionBox>
           </Grid>
         </Grid>
+
       </Container>
     </Box>
   );
