@@ -495,31 +495,8 @@ export default function ScheduleDemo({ open, onClose }: { open: boolean; onClose
     }
   };
 
-  // const textFieldStyle = {
-  //   '& .MuiInputBase-root': {
-  //     color: 'white',
-      
-  //      background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
-  //   },
-  //   '& .MuiInputLabel-root': {
-  //     color: 'white'
-  //   },
-  //   '& .MuiInputLabel-root.Mui-focused': {
-  //     color: 'white'
-  //   },
-  //   '& .MuiOutlinedInput-root': {
-  //     '& fieldset': { borderColor: 'white' },
-  //     '&:hover fieldset': { borderColor: '#BBDEFB' },
-  //     '&.Mui-focused fieldset': { borderColor: 'white' }
-  //   },
-  //   '& .MuiSvgIcon-root': { color: 'white' },
-  //   '& .MuiFormHelperText-root': { color: '#FFCDD2' },
-  //   '& input:-webkit-autofill':{
-  //     WebkitBoxShadow:'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
-  //     WebkitTextFillColor:'#fff',
-  //     transition:'background-color 5000s ease-in-out 0s'
-  //   }
-  // };
+  
+  
   const textFieldStyle = {
   '& .MuiOutlinedInput-root': {
     backgroundColor: '#241d78',

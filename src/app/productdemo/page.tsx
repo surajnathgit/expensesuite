@@ -593,150 +593,278 @@
 
 
 
-
-
-
-
 'use client';
 
 import React from 'react';
-import { Box, Grid, Typography, Chip, Container, useTheme } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  Button,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+import {
+  CheckCircle,
+  Insights,
+  ReceiptLong,
+  VerifiedUser,
+  AutoGraph,
+} from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import mob from '../../../public/images/mob.png';
-import lapimg from '../../../public/images/lapimg.png';
-
-const features = [
-  'Smart Expense Tracking',
-  'Automated Receipt Scanning',
-  'Real-time Budget Insights',
-  'Multi-device Sync',
-  'Business & Personal Modes',
-];
+import mockup from '../../../public/images/dash.png'; // Replace with your image
+import { Public, SyncAlt } from '@mui/icons-material';
 
 const MotionBox = motion(Box);
+const differentiatorsDetailed = [
+  {
+    icon: <AutoGraph sx={{ color: '#38bdf8' }} />,
+    title: 'AI + OCR Powered',
+    description: 'Eliminate manual data entry with intelligent receipt scanning and extraction.',
+  },
+  {
+    icon: <VerifiedUser sx={{ color: '#38bdf8' }} />,
+    title: 'Built-in Compliance',
+    description: 'Expense policies are auto-enforced to reduce violations and fraud.',
+  },
+  {
+    icon: <Public sx={{ color: '#38bdf8' }} />,
+    title: 'Multi-Currency Support',
+    description: 'Easily manage expenses globally with full currency and locale compatibility.',
+  },
+  {
+    icon: <SyncAlt sx={{ color: '#38bdf8' }} />,
+    title: 'Seamless Integrations',
+    description: 'Connect effortlessly with 50+ accounting, HR, and finance platforms.',
+  },
+];
 
-export default function ProductPage() {
-  const theme = useTheme();
 
+const features = [
+  {
+    icon: <ReceiptLong sx={{ color: 'blueviolet' }} />,
+    title: 'AI-powered Receipt Scanning',
+    description: 'Scan and sort receipts instantly using OCR + AI.',
+  },
+  {
+    icon: <Insights sx={{ color: 'blueviolet' }} />,
+    title: 'Real-Time Budgeting',
+    description: 'Track expenses live with alerts and syncing.',
+  },
+  {
+    icon: <VerifiedUser sx={{ color: 'blueviolet' }} />,
+    title: 'Fraud Detection',
+    description: 'Detect violations and anomalies with ML-based protection.',
+  },
+  {
+    icon: <AutoGraph sx={{ color: 'blueviolet' }} />,
+    title: 'Analytics Dashboard',
+    description: 'Visualize reports, trends, and compliance insights.',
+  },
+];
+
+const differentiators = [
+  'AI + OCR — no manual entry ever again.',
+  'Compliance built-in, not bolted-on.',
+  'Multi-currency & localization support.',
+  'Integrates with 50+ accounting tools.',
+];
+
+export default function ProductDemoPage() {
   return (
-    <Box
-      sx={{
-        background: 'linear-gradient(to bottom right, #111827, #4c1d95, #111827)',
-        py: { xs: 8, md: 12 },
-        color: 'white',
-      }}
-    >
-      <Container>
-        <Grid container spacing={6} alignItems="center">
-          {/* LEFT SIDE – FEATURES */}
+    <Box sx={{ background: '#0f172a', py: { xs: 10, md: 14 }, color: 'white' }}>
+      <Container maxWidth="lg">
+        {/* 1. HERO SECTION */}
+        <Grid container spacing={6} alignItems="center" mb={10}>
+          {/* Left - Image */}
           <Grid item xs={12} md={6}>
             <MotionBox
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Typography variant="h3" fontWeight="bold" mb={2}>
-                All-in-One Expense Management
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: { xs: 260, sm: 360, md: 420 },
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src={mockup}
+                  alt="ExpenseSuite Demo"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </Box>
+            </MotionBox>
+          </Grid>
+
+          {/* Right - Content */}
+          <Grid item xs={12} md={6}>
+            <MotionBox
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                gutterBottom
+                textAlign={{ xs: 'center', md: 'left' }}
+              >
+                Say Goodbye to Manual Expense Management
               </Typography>
 
-              <Typography variant="body1" color="grey.400" mb={3}>
-                ExpenseSuite helps individuals and teams take control of their spending — fast, simple, and automated.
+              <Typography
+                variant="body1"
+                color="grey.400"
+                mb={3}
+                textAlign={{ xs: 'center', md: 'left' }}
+              >
+                ExpenseSuite is your AI-powered partner for tracking, approving, and analyzing expenses in real time. Whether you're a startup, enterprise, or freelancer — it's built to simplify finance workflows across teams.
               </Typography>
 
-              <Box display="flex" flexDirection="column" gap={2}>
-                {features.map((feature, idx) => (
-                  <Chip
-                    key={idx}
-                    label={feature}
-                    variant="outlined"
+              <Box display="flex" flexDirection="column" gap={1.5} mb={4}>
+                <Typography variant="body2" color="grey.300">✔️ Automate expense reporting from mobile or web</Typography>
+                <Typography variant="body2" color="grey.300">✔️ Scan receipts with built-in OCR & AI</Typography>
+                <Typography variant="body2" color="grey.300">✔️ Control budgets with instant policy alerts</Typography>
+                <Typography variant="body2" color="grey.300">✔️ Sync with accounting software effortlessly</Typography>
+              </Box>
+
+              <Box display="flex" gap={2} justifyContent={{ xs: 'center', md: 'flex-start' }}>
+                <Button variant="contained" color="primary" size="large">
+                  Get Started Free
+                </Button>
+                <Button variant="outlined" color="primary" size="large">
+                  Book a Demo
+                </Button>
+              </Box>
+            </MotionBox>
+          </Grid>
+        </Grid>
+
+        {/* 2. FEATURE SECTION */}
+        <MotionBox
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          mb={12}
+        >
+          <Typography variant="h4" fontWeight="bold" gutterBottom textAlign="center">
+            Key Features
+          </Typography>
+
+          <Grid container spacing={4} mt={2}>
+            {features.map((feat, idx) => (
+              <Grid item xs={12} sm={6} md={6} key={idx}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.15 }}
+                  viewport={{ once: true }}
+                >
+                  <Paper
+                    elevation={0}
                     sx={{
-                      borderColor: theme.palette.primary.main,
-                      color: 'white',
-                      fontWeight: 500,
-                      px: 2,
-                      py: 1,
-                      fontSize: '1rem',
-                      borderRadius: 2,
-                      width: 'fit-content',
-                      
+                      p: 3,
+                      backgroundColor: '#111827',
+                      border: '1px solid #334155',
+                      borderRadius: 3,
+                      height: '100%',
                     }}
-                  />
-                ))}
-              </Box>
-            </MotionBox>
+                  >
+                    <Box display="flex" alignItems="center" mb={1.5}>
+                      {feat.icon}
+                      <Typography variant="h6" fontWeight="bold" ml={2} sx={{ color: 'blueviolet' }}>
+                        {feat.title}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2" color="grey.300">
+                      {feat.description}
+                    </Typography>
+                  </Paper>
+                </motion.div>
+              </Grid>
+            ))}
           </Grid>
+        </MotionBox>
 
-          {/* RIGHT SIDE – MOBILE IMAGE */}
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: { xs: 400, sm: 500, md: 600, lg: 700 },
-                borderRadius: 4,
-                overflow: 'hidden',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
-              }}
-            >
-              <Image
-                src={mob}
-                alt="ExpenseSuite Mobile Demo"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </Box>
+        {/* 3. WHY CHOOSE SECTION */}
+        <MotionBox
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            gutterBottom
+            textAlign="center"
+          >
+            Why Choose ExpenseSuite?
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="grey.400"
+            textAlign="center"
+            maxWidth="md"
+            mx="auto"
+            mb={5}
+          >
+            Experience an expense solution built for modern teams — with intelligence, speed, and accuracy at its core.
+          </Typography>
+
+          <Grid container spacing={4}>
+            {differentiatorsDetailed.map((item, idx) => (
+              <Grid item xs={12} sm={6} key={idx}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 2,
+                      backgroundColor: '#1e293b',
+                      borderRadius: 3,
+                      px: 3,
+                      py: 2,
+                      height: '100%',
+                      border: '1px solid #334155',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" gap={1}>
+                      {item.icon}
+                      <Typography variant="h6" fontWeight="bold" color="grey.100">
+                        {item.title}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2" color="grey.300" mt={1}>
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </motion.div>
+              </Grid>
+            ))}
           </Grid>
-        </Grid>
-
-        {/* SECOND ROW – LAPTOP IMAGE & "Why Choose" CONTENT */}
-        <Grid container spacing={6} alignItems="center" mt={10}>
-          {/* LEFT – LAPTOP IMAGE */}
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: { xs: 300, sm: 400, md: 500 },
-
-              }}
-            >
-              <Image
-                src={lapimg}
-                alt="ExpenseSuite Laptop Demo"
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </Box>
-          </Grid>
-
-          {/* RIGHT – WHY CHOOSE CONTENT */}
-          <Grid item xs={12} md={6}>
-            <MotionBox
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-            >
-              <Typography variant="h4" fontWeight="bold" mb={2}>
-                Why Choose ExpenseSuite?
-              </Typography>
-
-              <Typography variant="body1" color="grey.400" mb={3}>
-                Because modern finance demands smarter tools — not spreadsheets.
-              </Typography>
-
-              <Box display="flex" flexDirection="column" gap={1.5}>
-                <Typography variant="body1">✅ One platform for personal & business expenses</Typography>
-                <Typography variant="body1">✅ AI-powered receipt scanning</Typography>
-                <Typography variant="body1">✅ Real-time budget insights</Typography>
-                <Typography variant="body1">✅ Collaborate with your team</Typography>
-                <Typography variant="body1">✅ Access from any device securely</Typography>
-              </Box>
-            </MotionBox>
-          </Grid>
-        </Grid>
+        </MotionBox>
 
       </Container>
     </Box>
