@@ -721,6 +721,12 @@ export default function ProductDemoPage() {
                 fontWeight="bold"
                 gutterBottom
                 textAlign={{ xs: 'center', md: 'left' }}
+                sx={{
+                  background: 'linear-gradient(87deg,rgba(63, 94, 251, 1) 0%, rgba(89, 91, 231, 1) 14%, rgba(238, 72, 118, 1) 93%, rgba(252, 70, 107, 1) 93%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontWeight: 'bold',
+                }}
               >
                 Say Goodbye to Manual Expense Management
               </Typography>
@@ -761,7 +767,18 @@ export default function ProductDemoPage() {
           viewport={{ once: true }}
           mb={12}
         >
-          <Typography variant="h4" fontWeight="bold" gutterBottom textAlign="center">
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            gutterBottom
+            textAlign="center"
+            sx={{
+              background: 'linear-gradient(87deg, rgba(45, 16, 232, 1) 0%, rgba(240, 93, 154, 1) 62%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontWeight: 'bold',
+            }}
+          >
             Key Features
           </Typography>
 
@@ -782,11 +799,22 @@ export default function ProductDemoPage() {
                       border: '1px solid #334155',
                       borderRadius: 3,
                       height: '100%',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-6px)',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+                        borderColor: '#6366f1',
+                      },
                     }}
                   >
                     <Box display="flex" alignItems="center" mb={1.5}>
                       {feat.icon}
-                      <Typography variant="h6" fontWeight="bold" ml={2} sx={{ color: 'blueviolet' }}>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        ml={2}
+                        sx={{ color: 'blueviolet' }}
+                      >
                         {feat.title}
                       </Typography>
                     </Box>
@@ -812,6 +840,12 @@ export default function ProductDemoPage() {
             fontWeight="bold"
             gutterBottom
             textAlign="center"
+            sx={{
+              background: 'linear-gradient(87deg, rgba(45, 16, 232, 1) 0%, rgba(240, 93, 154, 1) 62%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontWeight: 'bold',
+            }}
           >
             Why Choose ExpenseSuite?
           </Typography>
@@ -848,6 +882,12 @@ export default function ProductDemoPage() {
                       height: '100%',
                       border: '1px solid #334155',
                       flexDirection: 'column',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-6px)',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+                        borderColor: '#6366f1',
+                      },
                     }}
                   >
                     <Box display="flex" alignItems="center" gap={1}>
@@ -865,6 +905,7 @@ export default function ProductDemoPage() {
             ))}
           </Grid>
         </MotionBox>
+
 
       </Container>
     </Box>
