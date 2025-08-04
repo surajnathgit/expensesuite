@@ -617,7 +617,8 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import mockup from '../../../public/images/dash.png'; // Replace with your image
+import mockup from '../../../public/images/dash.png';
+import mobile from '../../../public/images/mobile.png';
 import { Public, SyncAlt } from '@mui/icons-material';
 
 const MotionBox = motion(Box);
@@ -748,9 +749,9 @@ export default function ProductDemoPage() {
               </Box>
 
               <Box display="flex" gap={2} justifyContent={{ xs: 'center', md: 'flex-start' }}>
-                <Button variant="contained" color="primary" size="large">
+                {/* <Button variant="contained" color="primary" size="large">
                   Get Started Free
-                </Button>
+                </Button> */}
                 <Button variant="outlined" color="primary" size="large">
                   Book a Demo
                 </Button>
@@ -758,6 +759,86 @@ export default function ProductDemoPage() {
             </MotionBox>
           </Grid>
         </Grid>
+
+
+
+        <Grid container spacing={4} alignItems="center" justifyContent="center">
+          {/* Left Section - Submitter Benefits */}
+          <Grid item xs={12} md={4}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Box sx={{ px: 2 }}>
+                <Typography variant="h5" sx={{
+                  fontWeight: 'bold', mb: 3, color: 'white',
+                  background: 'linear-gradient(87deg,rgba(63, 94, 251, 1) 0%, rgba(89, 91, 231, 1) 14%, rgba(238, 72, 118, 1) 93%, rgba(252, 70, 107, 1) 93%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
+                  Why Submitters Love Expense Suite
+                </Typography>
+                <Box component="ul" sx={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: 2.2, pl: 2 }}>
+                  <li>📱 Submit expenses easily via mobile or web</li>
+                  <li>⏱️ Real-time tracking of approval status</li>
+                  <li>📷 Upload receipts instantly from your device</li>
+                  <li>💰 Quick reimbursements & budget clarity</li>
+                  <li>🧾 View past claims & export history</li>
+                </Box>
+              </Box>
+            </motion.div>
+          </Grid>
+
+          {/* Center Section - Mobile Mockup */}
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src="/images/mobile.png"
+                alt="Mobile Expense Mockup"
+                width={300}
+                height={600}
+                style={{ objectFit: 'contain' }}
+              />
+            </motion.div>
+          </Grid>
+
+          {/* Right Section - Approver Benefits */}
+          <Grid item xs={12} md={4}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Box sx={{ px: 2 }}>
+                <Typography variant="h5" sx={{
+                  fontWeight: 'bold', mb: 3, color: 'white',
+                  background: 'linear-gradient(87deg,rgba(63, 94, 251, 1) 0%, rgba(89, 91, 231, 1) 14%, rgba(238, 72, 118, 1) 93%, rgba(252, 70, 107, 1) 93%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
+                  Why Approvers Rely on Expense Suite
+                </Typography>
+                <Box component="ul" sx={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: 2.2, pl: 2 }}>
+                  <li>🔍 Quickly review and approve or reject claims</li>
+                  <li>📊 Dashboard overview with expense insights</li>
+                  <li>🟢 Status filters: Pending, Approved, Rejected</li>
+                  <li>🔒 Secure & role-based access control</li>
+                  <li>📥 Download reports & maintain audit logs</li>
+                </Box>
+              </Box>
+            </motion.div>
+          </Grid>
+        </Grid>
+
+
 
         {/* 2. FEATURE SECTION */}
         <MotionBox
