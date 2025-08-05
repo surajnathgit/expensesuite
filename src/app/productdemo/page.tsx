@@ -596,6 +596,7 @@
 'use client';
 
 import React from 'react';
+import { useState } from 'react';
 import {
   Box,
   Container,
@@ -603,13 +604,10 @@ import {
   Grid,
   Paper,
   Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  Tabs,
+  Tab
 } from '@mui/material';
 import {
-  CheckCircle,
   Insights,
   ReceiptLong,
   VerifiedUser,
@@ -619,7 +617,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import mockup from '../../../public/images/dash.png';
 import mobile from '../../../public/images/mobile.png';
+import dashe from '../../../public/images/dashe.png';
+import submitter from '../../../public/images/submitter.png';
+import approve from '../../../public/images/approve.png';
 import { Public, SyncAlt } from '@mui/icons-material';
+import ScheduleDemo from '@/components/common/ScheduleDemo';
 
 const MotionBox = motion(Box);
 const differentiatorsDetailed = [
@@ -677,6 +679,12 @@ const differentiators = [
 ];
 
 export default function ProductDemoPage() {
+  const [demoOpen, setDemoOpen] = useState(false);
+  const [tabIndex, setTabIndex] = useState(0);
+  const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
+    setTabIndex(newIndex);
+  };
+
   return (
     <Box sx={{ background: '#0f172a', py: { xs: 10, md: 14 }, color: 'white' }}>
       <Container maxWidth="lg">
@@ -749,10 +757,9 @@ export default function ProductDemoPage() {
               </Box>
 
               <Box display="flex" gap={2} justifyContent={{ xs: 'center', md: 'flex-start' }}>
-                {/* <Button variant="contained" color="primary" size="large">
-                  Get Started Free
-                </Button> */}
-                <Button variant="outlined" color="primary" size="large">
+
+                <Button variant="outlined" color="primary" size="large"
+                  onClick={() => setDemoOpen(true)}>
                   Book a Demo
                 </Button>
               </Box>
@@ -838,8 +845,96 @@ export default function ProductDemoPage() {
           </Grid>
         </Grid>
 
+        {/* Tab section */}
+        <Box sx={{ width: '100%', mt: 4, mb: 6 }}>
+          <Tabs
+            value={tabIndex}
+            onChange={handleChange}
+            centered
+            textColor="primary"
+            indicatorColor="primary"
+          >
+            <Tab label="Dashboard" />
+            <Tab label="Submitter" />
+            <Tab label="Approver" />
+          </Tabs>
 
+          <Box sx={{ mt: 3, textAlign: 'center' }}>
+            {tabIndex === 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  Dashboard View
+                </Typography>
+                <Image
+                  src={dashe}
+                  alt="Dashboard"
+                  width={1000}
+                  height={600}
+                  style={{
+                    borderRadius: '12px',
+                    boxShadow: '0px 2px 12px rgba(0,0,0,0.2)',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                />
+              </motion.div>
+            )}
 
+            {tabIndex === 1 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  Submitter View
+                </Typography>
+                <Image
+                  src={submitter}
+                  alt="Submitter"
+                  width={1000}
+                  height={600}
+                  style={{
+                    borderRadius: '12px',
+                    boxShadow: '0px 2px 12px rgba(0,0,0,0.2)',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                />
+              </motion.div>
+            )}
+
+            {tabIndex === 2 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  Approver View
+                </Typography>
+                <Image
+                  src={approve}
+                  alt="Approver"
+                  width={1000}
+                  height={600}
+                  style={{
+                    borderRadius: '12px',
+                    boxShadow: '0px 2px 12px rgba(0,0,0,0.2)',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                />
+              </motion.div>
+            )}
+          </Box>
+        </Box>
+
+        
         {/* 2. FEATURE SECTION */}
         <MotionBox
           initial={{ opacity: 0, y: 30 }}
@@ -989,6 +1084,7 @@ export default function ProductDemoPage() {
 
 
       </Container>
+      <ScheduleDemo open={demoOpen} onClose={() => setDemoOpen(false)} />
     </Box>
   );
 }
