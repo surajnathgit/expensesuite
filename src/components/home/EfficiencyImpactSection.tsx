@@ -80,7 +80,7 @@ const EfficiencyImpactSection = () => {
         sx={{
           py: { xs: 12, lg: 20 },
           px: { xs: 1, sm: 2, md: 4, lg: 6 },
-          overflowX: 'hidden', 
+          overflowX: 'hidden',
         }}
       >
         <motion.section
@@ -229,7 +229,6 @@ const EfficiencyImpactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Container maxWidth="xl" disableGutters>
-
             <Box
               sx={{
                 textAlign: 'center',
@@ -247,10 +246,10 @@ const EfficiencyImpactSection = () => {
                   color: '#fff',
                   mb: { xs: 2, sm: 3 },
                   fontSize: {
-                    xs: '1.75rem',  // ~28px
-                    sm: '2.25rem',  // ~36px
-                    md: '2.75rem',  // ~44px
-                    lg: '3rem',     // ~48px
+                    xs: '1.75rem',
+                    sm: '2.25rem',
+                    md: '2.75rem',
+                    lg: '3rem',
                   },
                   lineHeight: 1.3,
                   wordBreak: 'break-word',
@@ -278,8 +277,6 @@ const EfficiencyImpactSection = () => {
               </Typography>
             </Box>
 
-
-
             <Typography variant="h5" sx={{ color: '#60A5FA', mb: 3 }}>
               Roles Reduced or Replaced
             </Typography>
@@ -290,11 +287,12 @@ const EfficiencyImpactSection = () => {
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} style={{ width: '100%' }}>
                     <Box
                       sx={{
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        border: '1px solid #3B82F6',
                         borderRadius: '24px',
                         p: 4,
                         background: 'rgba(255, 255, 255, 0.04)',
                         textAlign: 'center',
+                        boxShadow: '0 0 12px rgba(59, 130, 246, 0.4)',
                       }}
                     >
                       <Typography variant="h6" sx={{ color: '#F87171', fontWeight: 'bold', mb: 1 }}>
@@ -306,7 +304,6 @@ const EfficiencyImpactSection = () => {
                       <Typography variant="body2" sx={{ color: '#9CA3AF', mt: 1 }}>
                         {item.note}
                       </Typography>
-
                     </Box>
                   </motion.div>
                 </Grid>
@@ -316,17 +313,19 @@ const EfficiencyImpactSection = () => {
             <Typography variant="h5" sx={{ color: '#A78BFA', mb: 3 }}>
               New Roles Created
             </Typography>
+
             <Grid container spacing={3} sx={{ mb: 8 }}>
               {newRoles.map((item, idx) => (
                 <Grid item xs={12} sm={6} md={4} key={idx}>
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} style={{ width: '100%' }}>
                     <Box
                       sx={{
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        border: '1px solid #3B82F6',
                         borderRadius: '24px',
                         p: 4,
                         background: 'rgba(255, 255, 255, 0.04)',
                         textAlign: 'center',
+                        boxShadow: '0 0 12px rgba(59, 130, 246, 0.4)',
                       }}
                     >
                       <Chip label={item.label} sx={{ mb: 1, color: '#fff', backgroundColor: '#4F46E5' }} />
@@ -345,17 +344,19 @@ const EfficiencyImpactSection = () => {
             <Typography variant="h5" sx={{ color: '#34D399', mb: 3 }}>
               Net Impact Summary
             </Typography>
+
             <Grid container spacing={3}>
               {netImpact.map((item, idx) => (
                 <Grid item xs={12} sm={6} md={4} key={idx}>
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} style={{ width: '100%' }}>
                     <Box
                       sx={{
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        border: '1px solid #3B82F6',
                         borderRadius: '24px',
                         p: 4,
                         background: 'rgba(255, 255, 255, 0.04)',
                         textAlign: 'center',
+                        boxShadow: '0 0 12px rgba(59, 130, 246, 0.4)',
                       }}
                     >
                       <Typography variant="h6" sx={{ color: '#10B981', fontWeight: 'bold', mb: 1 }}>
@@ -372,6 +373,7 @@ const EfficiencyImpactSection = () => {
           </Container>
         </motion.section>
       </Box>
+
     </Box>
   );
 };
